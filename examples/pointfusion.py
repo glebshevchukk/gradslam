@@ -43,12 +43,14 @@ if __name__ == "__main__":
 
     # load dataset
     if args.dataset == "icl":
-        dataset = ICL(args.dataset_path, seqlen=10, height=120, width=160)
+        dataset = ICL(args.dataset_path, seqlen=100, height=120, width=160)
     elif args.dataset == "tum":
         dataset = TUM(args.dataset_path, seqlen=10, height=120, width=160)
     loader = DataLoader(dataset=dataset, batch_size=2)
     colors, depths, intrinsics, poses, *_ = next(iter(loader))
-
+    height = colors.shape[2]
+    width = colors.shape[3]
+ 
     # create rgbdimages object
     rgbdimages = RGBDImages(colors, depths, intrinsics, poses, channels_first=False)
 

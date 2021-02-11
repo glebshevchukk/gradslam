@@ -782,7 +782,7 @@ def update_map_fusion(
         gradslam.Pointclouds: Updated Pointclouds object containing global maps.
 
     """
-    batch_size, seq_len, height, width = rgbdimages.shape
+  
     pc2im_bnhw = find_correspondences(pointclouds, rgbdimages, dist_th, dot_th)
     pointclouds = fuse_with_map(pointclouds, rgbdimages, pc2im_bnhw, sigma, inplace)
 
